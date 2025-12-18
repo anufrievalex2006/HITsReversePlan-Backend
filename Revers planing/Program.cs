@@ -43,9 +43,10 @@ public class Program
         });
         builder.Services.AddCors(options => {
             options.AddPolicy("FrontPolicy", policy => {
-                policy.SetIsOriginAllowed(origin => true)
-                      .AllowAnyHeader()
+                policy.AllowAnyHeader()
                       .AllowAnyMethod()
+                      .SetIsOriginAllowed(origin =>
+                        origin.StartsWith("https://anufrievalex2006.github.io"))
                       .AllowCredentials();
             });
         });
